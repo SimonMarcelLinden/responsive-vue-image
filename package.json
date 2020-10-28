@@ -1,11 +1,37 @@
 {
   "name": "responsive-vue-image",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Responsive Vue Image",
+  "private": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build:npm": "vue-cli-service build --target lib --name ResponsiveVueImage src/ResponsiveVueImage.vue",
+    "test": "vue serve src/ResponsiveVueImage.vue"
   },
+  "main": "dist/myComponent.umd.js",
+  "unpkg": "dist/myComponent.umd.min.js",
+  "keywords": [
+    "Responsive",
+    "Image",
+    "Vue"
+  ],
+  "author": {
+    "name": "Simon Marcel Linden",
+    "email": "info@snerve.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonMarcelLinden/responsive-vue-image.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SimonMarcelLinden/responsive-vue-image/issues"
+  },
+  "homepage": "https://github.com/SimonMarcelLinden/responsive-vue-image#readme",
+  "license": "ISC",
   "dependencies": {
     "vue": "^2.6.11"
   },
