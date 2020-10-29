@@ -12,8 +12,8 @@
     "build:npm": "vue-cli-service build --target lib --name ResponsiveVueImage src/ResponsiveVueImage.vue",
     "test": "vue serve src/ResponsiveVueImage.vue"
   },
-  "main": "dist/myComponent.umd.js",
-  "unpkg": "dist/myComponent.umd.min.js",
+  "main": "dist/ResponsiveVueImage.umd.js",
+  "unpkg": "dist/ResponsiveVueImage.umd.min.js",
   "keywords": [
     "Responsive",
     "Image",
