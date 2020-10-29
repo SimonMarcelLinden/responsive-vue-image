@@ -1,9 +1,12 @@
 <template>
   <div class="responsive-vue-image">
     <picture>
-      <source media="(max-width:768px)" :srcset="getImageMobile" />
-      <source media="(max-width:992px)" :srcset="getImageTablet" />
-      <img :src="image.image" :alt="image.alt" @error="imageLoadError" />
+      <source media="(max-width:768px)"
+              :srcset="getImageMobile + ' 768w'"  :data-fallback-src="fallbackImage"/>
+      <source media="(max-width:992px)"
+              :srcset="getImageTablet + ' 992w'"  :data-fallback-src="fallbackImage"/>
+      <source :srcset="getImageDesktop"           :data-fallback-src="fallbackImage"/>
+      <img :src="getImageDesktop" :alt="image.alt" ref="image" @error="imageLoadError" :data-fallback-src="fallbackImage"/>
     </picture>
   </div>
 </template>
@@ -13,7 +16,7 @@ export default {
   name: "ResponsiveVueImage",
   props: {
     fallbackImage: {
-      default: 'https://via.placeholder.com/64',
+      default: 'https://via.placeholder.com/768',
       required: false
     },
     image: {
@@ -39,12 +42,16 @@ export default {
           ? this.image.imageTablet
           : this.image.image;
     },
+    getImageDesktop() {
+      return this.image.image;
+    },
   },
   methods: {
-    imageLoadError ( $event ) {
+    imageLoadError( event ) {
       console.log( 'Image failed to load. Load fallback image: %s', this.fallbackImage);
-      $event.onerror = null;
-      $event.target.src  = ( this.fallbackImage ) ? this.fallbackImage : 'https://via.placeholder.com/150'
+      const imgTag      = this.$refs.image;
+      const srcElement  = imgTag.closest('picture').querySelector( `[srcset~="${event.target.currentSrc}"]` );
+      srcElement.srcset = srcElement.dataset.fallbackSrc;
     }
   }
 }
