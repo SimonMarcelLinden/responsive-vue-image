@@ -4,15 +4,20 @@
   "description": "Responsive Vue Image",
   "private": false,
   "files": [
-    "dist"
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js",
+    "plugins/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:npm": "vue-cli-service build --target lib --name ResponsiveVueImage src/ResponsiveVueImage.vue",
+    "build:npm": "vue-cli-service build --target lib --name ResponsiveVueImage src/index.js",
     "test": "vue serve src/ResponsiveVueImage.vue"
   },
-  "main": "dist/ResponsiveVueImage.umd.js",
+  "main": "dist/ResponsiveVueImage.common.js",
   "unpkg": "dist/ResponsiveVueImage.umd.min.js",
   "keywords": [
     "Responsive",
